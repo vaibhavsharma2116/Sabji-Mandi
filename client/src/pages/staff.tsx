@@ -6,6 +6,8 @@ import { Badge } from "@/components/ui/badge";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Search, Plus, UserCheck, Users, Clock, Calendar, CheckCircle, XCircle } from "lucide-react";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
+import { Edit, Eye, MoreHorizontal, Trash2 } from "lucide-react";
 
 // Mock data for demonstration
 const staff = [
@@ -146,6 +148,14 @@ export default function Staff() {
       case "late": return "secondary";
       default: return "default";
     }
+  };
+
+  const openEditDialog = (employee: any) => {
+    console.log('Edit employee:', employee.id);
+  };
+
+  const handleDeleteEmployee = (employeeId: any) => {
+    console.log('Delete employee:', employeeId);
   };
 
   return (
@@ -324,7 +334,30 @@ export default function Staff() {
                         </Badge>
                       </TableCell>
                       <TableCell className="text-right">
-                        <Button variant="ghost" size="sm">Edit</Button>
+                        <DropdownMenu>
+                          <DropdownMenuTrigger asChild>
+                            <Button variant="ghost" size="sm">
+                              <MoreHorizontal size={16} />
+                            </Button>
+                          </DropdownMenuTrigger>
+                          <DropdownMenuContent align="end">
+                            <DropdownMenuItem onClick={() => openEditDialog(employee)}>
+                              <Edit size={14} className="mr-2" />
+                              Edit
+                            </DropdownMenuItem>
+                            <DropdownMenuItem onClick={() => console.log('View employee:', employee.id)}>
+                              <Eye size={14} className="mr-2" />
+                              View Details
+                            </DropdownMenuItem>
+                            <DropdownMenuItem 
+                              onClick={() => handleDeleteEmployee(employee.id)}
+                              className="text-red-600"
+                            >
+                              <Trash2 size={14} className="mr-2" />
+                              Delete
+                            </DropdownMenuItem>
+                          </DropdownMenuContent>
+                        </DropdownMenu>
                       </TableCell>
                     </TableRow>
                   ))}
@@ -391,7 +424,23 @@ export default function Staff() {
                         {record.notes || "-"}
                       </TableCell>
                       <TableCell className="text-right">
-                        <Button variant="ghost" size="sm">Edit</Button>
+                        <DropdownMenu>
+                          <DropdownMenuTrigger asChild>
+                            <Button variant="ghost" size="sm">
+                              <MoreHorizontal size={16} />
+                            </Button>
+                          </DropdownMenuTrigger>
+                          <DropdownMenuContent align="end">
+                            <DropdownMenuItem onClick={() => console.log('Edit attendance:', record.id)}>
+                              <Edit size={14} className="mr-2" />
+                              Edit
+                            </DropdownMenuItem>
+                            <DropdownMenuItem onClick={() => console.log('Delete attendance:', record.id)}>
+                              <Trash2 size={14} className="mr-2" />
+                              Delete
+                            </DropdownMenuItem>
+                          </DropdownMenuContent>
+                        </DropdownMenu>
                       </TableCell>
                     </TableRow>
                   ))}

@@ -15,7 +15,8 @@ import {
   CreditCard,
   UserCheck,
   ShoppingBag,
-  ClipboardCheck
+  ClipboardCheck,
+  Calculator
 } from "lucide-react";
 
 interface SidebarProps {
@@ -32,6 +33,7 @@ const navigation = [
   { name: "Stall Management", href: "/stalls", icon: MapPin },
   { name: "Procurement", href: "/procurement", icon: Truck },
   { name: "Finance", href: "/finance", icon: CreditCard },
+  { name: "Accounting", href: "/accounting", icon: FileText },
   { name: "Staff", href: "/staff", icon: UserCheck },
   { name: "Orders", href: "/orders", icon: ShoppingBag },
   { name: "Quality Control", href: "/quality", icon: ClipboardCheck },

@@ -164,8 +164,8 @@ export default function AddProductModal({ open, onOpenChange }: AddProductModalP
                 <FormItem>
                   <FormLabel>Vendor (Optional)</FormLabel>
                   <Select 
-                    onValueChange={(value) => field.onChange(value ? parseInt(value) : null)} 
-                    defaultValue={field.value?.toString() || ""}
+                    onValueChange={(value) => field.onChange(value === "none" ? null : parseInt(value))} 
+                    defaultValue={field.value?.toString() || "none"}
                   >
                     <FormControl>
                       <SelectTrigger>
@@ -173,7 +173,7 @@ export default function AddProductModal({ open, onOpenChange }: AddProductModalP
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
-                      <SelectItem value="">No vendor assigned</SelectItem>
+                      <SelectItem value="none">No vendor assigned</SelectItem>
                       {vendors.map((vendor) => (
                         <SelectItem key={vendor.id} value={vendor.id.toString()}>
                           {vendor.name}

@@ -16,6 +16,7 @@ import Staff from "@/pages/staff";
 import Orders from "@/pages/orders";
 import Quality from "@/pages/quality";
 import NotFound from "@/pages/not-found";
+import Accounting from "@/pages/accounting";
 
 function Router() {
   return (
@@ -30,6 +31,7 @@ function Router() {
         <Route path="/stalls" component={Stalls} />
         <Route path="/procurement" component={Procurement} />
         <Route path="/finance" component={Finance} />
+        <Route path="/accounting" component={Accounting} />
         <Route path="/staff" component={Staff} />
         <Route path="/orders" component={Orders} />
         <Route path="/quality" component={Quality} />

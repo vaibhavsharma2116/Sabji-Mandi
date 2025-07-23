@@ -119,14 +119,17 @@ export default function AddVendorModal({ open, onOpenChange }: AddVendorModalPro
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Stall Number (Optional)</FormLabel>
-                  <Select onValueChange={field.onChange} defaultValue={field.value || ""}>
+                  <Select 
+                    onValueChange={(value) => field.onChange(value === "none" ? null : value)} 
+                    defaultValue={field.value || "none"}
+                  >
                     <FormControl>
                       <SelectTrigger>
                         <SelectValue placeholder="Select available stall" />
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
-                      <SelectItem value="">No stall assigned</SelectItem>
+                      <SelectItem value="none">No stall assigned</SelectItem>
                       {availableStalls.map((stall) => (
                         <SelectItem key={stall.id} value={stall.stallNumber}>
                           Stall {stall.stallNumber} - {stall.section}
